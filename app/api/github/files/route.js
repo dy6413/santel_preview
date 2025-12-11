@@ -1,17 +1,53 @@
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../../../lib/authOptions";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../../lib/authOptions"; // 상대 경로 수정
 
 export async function GET(req) {
-  const session = await getServerSession(authOptions);
+  try {
+    const session = await getServerSession(authOptions); // 세션 확인
 
-  if (!session) {
-    return new Response(JSON.stringify({ error: "Not authenticated" }), {
-      status: 401,
+    if (!session) {
+      return new Response(
+        JSON.stringify({ error: "Not authenticated" }),
+        { status: 401, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    const token = session.accessToken; // 세션에서 액세스 토큰 가져오기
+    if (!token) {
+      return new Response(
+        JSON.stringify({ error: "No access token found" }),
+        { status: 401, headers: { "Content-Type": "application/json" } }
+      );
+    }
+
+    const owner = "dy6413"; // GitHub ID
+    const repo = "santel_preview"; // GitHub Repo 이름
+
+    // GitHub API로 파일 목록 요청
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json",
+      },
     });
-  }
 
-  return new Response(JSON.stringify({ ok: true }), { status: 200 });
+    const data = await res.json();
+
+    // 배열이 아닌 경우 빈 배열로 처리
+    const files = Array.isArray(data) ? data : [];
+
+    return new Response(JSON.stringify(files), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (err) {
+    return new Response(
+      JSON.stringify({ error: err.message }),
+      { status: 500, headers: { "Content-Type": "application/json" } }
+    );
+  }
 }
+
 
 
 

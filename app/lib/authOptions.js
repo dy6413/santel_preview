@@ -1,11 +1,11 @@
-import GitHubProvider from "next-auth/providers/github";
+import GithubProvider from "next-auth/providers/github";
 
 export const authOptions = {
   providers: [
-    GitHubProvider({
+    GithubProvider({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      authorization: { params: { scope: "repo user" } },
+      authorization: { params: { scope: "read:user repo" } }, // private repo 접근
     }),
   ],
   callbacks: {
@@ -18,4 +18,5 @@ export const authOptions = {
       return session;
     },
   },
+  secret: process.env.NEXTAUTH_SECRET,
 };

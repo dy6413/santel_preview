@@ -1,0 +1,117 @@
+"use client";
+import { useState, useEffect } from "react";
+
+interface FileNode {
+  name: string;
+  path: string;
+  sha: string;
+  type: "file" | "dir";
+}
+
+function TreeNode({ node }: { node: FileNode }) {
+  const [expanded, setExpanded] = useState(false);
+  const [children, setChildren] = useState<FileNode[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const toggle = async () => {
+    if (node.type !== "dir") return;
+    if (!expanded) {
+      setLoading(true);
+      const res = await fetch(`/api/github/files?path=${encodeURIComponent(node.path)}`);
+      const data = await res.json();
+      setChildren(Array.isArray(data) ? data : []);
+      setLoading(false);
+    }
+    setExpanded(!expanded);
+  };
+
+  return (
+    <div style={{ paddingLeft: 20 }}>
+      <div onClick={toggle} style={{ cursor: node.type === "dir" ? "pointer" : "default" }}>
+        {node.type === "dir" ? (expanded ? "▼ " : "▶︎ ") : "📄 "}
+        {node.name}
+      </div>
+      {expanded && (
+        <div style={{ marginLeft: 16 }}>
+          {loading ? <p>Loading...</p> : children.map(c => <TreeNode key={c.sha} node={c} />)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function RepoTree() {
+  const [rootNodes, setRootNodes] = useState<FileNode[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/github/files")
+      .then(res => res.json())
+      .then(data => setRootNodes(Array.isArray(data) ? data : []))
+      .catch(err => setError(err.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) return <p>Loading root files...</p>;
+  if (error) return <p>Error: {error}</p>;
+
+  return (
+    <div style={{ padding: 20 }}>
+      <h2>Repo 파일 트리 구조</h2>
+      {rootNodes.length === 0 ? <p>파일이 없습니다.</p> : rootNodes.map(node => <TreeNode key={node.sha} node={node} />)}
+    </div>
+  );
+}
+
+
+
+// "use client";
+
+// import { useEffect, useState } from "react";
+
+// interface RepoFile {
+//   name: string;
+//   path: string;
+//   type: string;
+//   sha: string;
+// }
+
+// export default function RepoPage() {
+//   const [files, setFiles] = useState<RepoFile[]>([]);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState<string | null>(null);
+
+//   useEffect(() => {
+//     fetch("/api/github/files")
+//       .then((res) => {
+//         if (!res.ok) throw new Error("파일 목록 불러오기 실패");
+//         return res.json();
+//       })
+//       .then((data) => setFiles(data))
+//       .catch((err) => setError(err.message))
+//       .finally(() => setLoading(false));
+//   }, []);
+
+//   if (loading) return <p>Loading...</p>;
+//   if (error) return <p>Error: {error}</p>;
+
+//   return (
+//     <div style={{ padding: 40 }}>
+//       <h2>Repo 파일 목록</h2>
+//       {files.length === 0 ? (
+//         <p>파일이 없습니다.</p>
+//       ) : (
+//         <ul>
+//           {files.map((file) => (
+//             <li key={file.sha}>
+//               {file.name} ({file.type})
+//             </li>
+//           ))}
+//         </ul>
+//       )}
+//     </div>
+//   );
+// }
+
+

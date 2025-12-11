@@ -2,26 +2,16 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../../../lib/authOptions";
 
 export async function GET(req) {
-  try {
-    const session = await getServerSession(authOptions);
-    if (!session) {
-      return new Response(JSON.stringify({ error: "Not authenticated" }), {
-        status: 401,
-      });
-    }
+  const session = await getServerSession(authOptions);
 
-    return new Response(JSON.stringify({ message: "OK" }), {
-      status: 200,
+  if (!session) {
+    return new Response(JSON.stringify({ error: "Not authenticated" }), {
+      status: 401,
     });
-  } catch (error) {
-    console.error("Error in GET:", error);
-    return new Response(
-      JSON.stringify({ error: "Internal Server Error" }),
-      { status: 500 }
-    );
   }
-}
 
+  return new Response(JSON.stringify({ ok: true }), { status: 200 });
+}
 
 
 

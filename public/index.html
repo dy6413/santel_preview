@@ -1,0 +1,1943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="format-detection" content="telephone=no">
+  <meta property="og:url" content=""/>
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="">
+  <meta property="og:description" content="">
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+
+
+</head>
+
+<body>
+    <style>
+    /* 영문 */
+    @font-face {
+        font-family: 'ABChaRL';
+        font-weight: 600;
+        font-style: normal;
+        src: local("ABChanelPBSemiBoldL"), local("ABChanelPBSemiBoldL"), url(images/ABChanelPBSemiBoldL.woff) format("woff"), url(images/ABChanelPBSemiBoldL.woff2) format("woff2"), url(images/ABChanelPBSemiBoldL.eot?#iefix) format("embedded-opentype");
+    }
+
+    @font-face {
+        font-family: 'ABChaRL';
+        font-style: normal;
+        font-weight: 400;
+        src: local("ABChanelPBRegularL"), local("ABChanelPBRegularL"), url(images/ABChanelPBRegularL.woff) format("woff"), url(images/ABChanelPBRegularL.woff2) format("woff2"), url(images/ABChanelPBRegularL.eot?#iefix) format("embedded-opentype");
+    }        
+
+    .Container {
+        font-family: 'ABChaRL';
+        width: 100%;
+        position: relative;
+        word-break: keep-all;
+        text-align: center;
+        max-width:1112px;
+        margin:0 auto;
+    }      
+
+    html{
+        display:block;
+        padding:0;
+        margin:0;
+    }
+
+    body{
+        margin:0;
+    }
+
+    div{
+        display:block;
+        line-height:0;        
+    }
+
+    picture{
+        display:block;
+        line-height:0;
+    }
+
+    button{
+        border:none;
+        margin:0;
+        padding:0;
+    }
+
+    header{
+        position: sticky;
+        top: 0;
+        background: white;
+        z-index: 1000;
+        border-bottom:1px solid #ececec;
+    }
+
+    .icon_list{
+        max-width: 1112px;
+        margin: 0 auto;
+        background: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0 0 0;
+        box-sizing: border-box;
+    }
+
+    .logo_naver{
+        width: 30px;
+        height: 30px;
+        background-size: 22px 22px;        
+        width: 30px;
+        height: 30px;
+        background: url('images/logo_naver.png') no-repeat 50% 50% / 22px 22px;
+        z-index: 10;        
+    }
+
+    .logo_naver a{
+        text-decoration: none;
+        cursor: pointer;
+        text-indent: -9999px;
+        display: block;
+        width: 100%;
+        height: 100%;        
+    }
+
+    .logo{
+        position: relative;
+        margin: 0 auto;
+        padding: 20px 0;        
+        flex: 0 0 auto;        
+    }
+
+    .logo a{
+        margin: 0 auto;
+        display: block;
+        width: 100px;
+        height: 20px;
+        background: url('images/logo.png') no-repeat 50% 50% / auto 15px;
+        cursor: pointer;
+    }
+
+    .blind{
+        overflow: hidden;
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+    }
+
+    .naver_share{
+        width: 30px;
+        height: 30px;
+        background-size: 22px 22px;           
+        display: block;
+        width: 30px;
+        height: 30px;
+        background: url('images/btn_share.png') no-repeat 50% 50% / 22px 22px;    
+    }
+
+    .naver_share a{
+        text-decoration: none;
+        cursor: pointer;
+        text-indent: -9999px;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .contetns{position: relative;}
+
+    .video_contetns{
+        position: relative;
+    }
+
+    img{width:100%; max-width:100%;}
+
+    .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap:110px;
+        position: relative;
+    }
+
+    .tab {
+        flex: 0;
+        padding:0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.3s;
+        font-size: 18px;
+        letter-spacing: 0px;
+        font-weight:500;        
+        color: #a0a0a0;
+        width:100%;
+        flex-basis: content;
+        font-family: 'ABChaRL';
+        line-height:30px;
+    }
+    .tab1{
+        padding:0 1px;
+    }
+
+    .tab.active {
+        font-weight: 600;
+        color:#111;
+    }
+
+    .tab-content {
+        display: none;
+        text-align: center;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .tab span {
+        display: inline-block;
+        position: relative;
+        font-weight: 500;
+    }
+
+    .tab.active span {
+        font-weight: 600;
+    }    
+
+    .tab[data-target="tab1"].active span {
+        letter-spacing: -0.5px;
+    }    
+
+    .tab span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -1px;  
+        width: 100%;
+        height: 3px;
+        background: transparent;
+        transform-origin: center;
+        transform: scaleX(0); 
+        transition: transform 0.25s ease, background 0.25s;
+    }
+
+    .tab.active span::after {
+        background: black;
+        transform: scaleX(1);
+    } 
+
+
+    /* .tab.active span::after {
+        content: "";
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%; 
+        height: 4px;
+        background: black;
+    }     */
+
+    .default-tab {
+        display: none;
+        text-align: center;
+        cursor: pointer;
+        line-height: 0;
+        border-bottom:1px solid #e9e9e9;
+    }
+    .default-tab img {
+        width: 100%;
+    }    
+
+    .image-tabs{
+        display:none;
+    }
+
+
+    .video_box{
+        position:relative;padding-top:56.25%; width:100%; height:0;
+    }
+
+    .video_pc{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;      
+        display:block;
+    }
+
+    .video_mo{
+        display:none;
+    }    
+
+
+    .contetns .link{text-indent: -9999px; position: absolute; text-decoration: none; cursor: pointer; display:block;}
+    .contetns .link01{
+        width: 10%;
+        height: 7%;
+        left: 45%;
+        top: 88.5%;
+    }    
+
+    .contetns .link02{
+        width: 10%;
+        height: 7%;
+        left: 45%;
+        top: 89.5%;
+    }        
+
+    .contetns .link03{
+        width: 10%;
+        height: 7%;
+        left: 45%;
+        top: 86.5%;
+    }       
+
+    #tab2 .contetns .link03{
+        width: 10%;
+        height: 7%;
+        left: 45%;
+        top: 86.5%;
+    }           
+
+    .contetns .link04{
+        width: 10%;
+        height: 7%;
+        left: 45%;
+        top: 86.5%;
+    }            
+
+    .contetns .link05{
+        width: 10%;
+        height: 7%;
+        left: 45%;
+        top: 84.5%;
+    }          
+
+    .contetns .link06{
+        width: 10%;
+        height: 7%;
+        left: 45%;
+        top: 84.5%;
+    }              
+
+    .swiper {
+        width: 100%;
+    }
+
+    .swiper-slide {
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        justify-content: center;
+    }
+
+    .swiper-pagination{
+        bottom:24.5% !important;
+    }
+
+    .swiper-pagination2{
+        display: none;
+    }
+
+    #tab1 .contents07 .swiper-pagination{
+        bottom:20.5% !important;
+    }
+
+    #tab2 .swiper-pagination{
+        bottom:30.5% !important;
+    }
+
+    #tab2 .contents04 .swiper-pagination, #tab2 .contents05 .swiper-pagination{
+        bottom:32% !important;
+    }    
+
+
+    .swiper-pagination-bullet-active{
+        color:#111;
+        background:#111;
+    }
+
+    .swiper-slide img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .text-img {
+        width: 100%; 
+    }        
+
+    .con_product{
+        padding:0 5.4% 100px 5.4%;
+        position:relative;
+    }
+
+    .con_product .swiper-wrapper{
+        display: inherit;
+        box-sizing: inherit;
+        justify-content: center;
+    }
+
+    .product_list{
+        display:flex;
+        flex-wrap: wrap;
+        gap:0 2%;
+    }
+
+    .product_list2{
+        justify-content: center;
+        align-items: center;
+    }
+
+    .product_list .items{
+        width:24%;
+        margin-right:1%;
+    }
+
+    .product_list a{
+        font-family: 'ABChaRL';
+        color:#111;
+        text-decoration: none;
+        cursor: pointer;
+        display:block;
+    }    
+
+    .product_txt{
+        font-family: 'ABChaRL';
+        color:#111;
+        text-align:left;
+    }
+
+    .product_txt h2{
+        font-size:15px;
+        line-height:23px;
+        font-weight:600;
+        margin:0;
+        padding:0;
+        text-transform: uppercase;
+        letter-spacing:1px;
+        word-break: keep-all;
+    }
+
+    .product_txt p{
+        font-size:13px;
+        line-height:20px;
+        font-weight:600;
+        margin:0;
+        padding:1% 0 0 0;
+        word-break: keep-all;
+        color:#222;
+        letter-spacing:1px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height:62px;
+        display: -webkit-box;             
+        -webkit-box-orient: vertical;     
+        -webkit-line-clamp: 4;         
+    }
+
+    .product_txt strong{
+        display:block;
+        font-size:15px;
+        line-height:20px;
+        font-weight:600;
+        margin:0;
+        padding:2% 0 0 0;
+    }
+
+    .pc{
+        display:block;
+    }
+    .mo{
+        display:none;
+    }
+
+    @media(max-width:1024px){
+        .video_contetns{
+            max-width:100%;
+        }
+    }
+
+    @media(max-width:780px){
+        .pc{
+            display:none;
+        }
+        .mo{
+            display:block;
+        }
+
+        header{
+            border-bottom:0;
+        }
+        .logo{
+            padding:2% 0;
+        }
+        .logo a{
+            width: 120px;
+            height: 30px;
+            background: url('images/logo.png') no-repeat 50% 50% / auto 15px;
+            cursor: pointer;
+            background-size:100%;
+        }        
+
+        .logo_naver{
+            padding-left:32px;
+        }
+
+        .naver_share{
+            padding-right:37px;
+        }
+
+        .tabs.text-tabs {
+            display: none;
+        }        
+
+        .tabs {
+            overflow: visible;
+            gap:0;
+            font-size:1vw;
+            max-height: 100%;
+        }
+
+        #defaultTab{
+            transition: opacity 0.3s ease;
+            opacity: 1; 
+            position: relative;
+            z-index: 1000;            
+        }        
+
+        .default-tab {
+            display: block;
+            border-bottom:0;
+        }        
+
+        .tab {
+            text-align: left;
+            padding: 0;
+            letter-spacing: 1px;
+            font-size:calc(22em / 7.5);
+            box-sizing: border-box;
+            position: relative;
+            line-height:calc(10em / 7.5);
+        }
+
+        .tabs.image-tabs .tab::before {
+            content: "";
+            display: block;
+            height: 1px;
+            background: transparent;
+            width: 88%;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: background-color 0.2s ease;
+        }
+
+        .tabs.image-tabs .tab.border-active::before {
+            background-color: #ececec;
+        }        
+
+        .tabs.image-tabs {
+            position: absolute;
+            top: 100%; 
+            left: 0;
+            width: 100%;
+            background: #fff;
+            z-index: 999;
+            display: none;
+            /* box-shadow: 0 10px 8px rgba(0,0,0,1);             */
+            display: none;
+            /* flex-direction: column; */
+            align-items: center;
+            gap: 0;
+        }        
+
+        .tabs.image-tabs.open {
+            display: flex;
+            position: absolute;
+        }        
+
+        .tabs.image-tabs .tab img {
+            width: 100%;
+            display:block;
+        }
+
+        .tabs.image-tabs.single .tab:not(.active) {
+            display: none;
+        }        
+
+        .tabs.image-tabs .tab.active {
+            display: none;
+        }        
+
+        .tab-text {
+            display: none;
+        }      
+
+
+        .video_box{
+            padding-top:99.25%;
+        }
+
+        .video_pc{
+            display:none;
+        }
+
+        .video_mo{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;      
+            display:block;
+        }         
+
+        .con_product{
+            padding:0 0 80px 0;
+            overflow: hidden;
+        }
+
+        .con_product .swiper-wrapper{
+            display: flex;
+            box-sizing: content-box;
+            justify-content: inherit;
+        }        
+
+        .product_list{
+            display:block;
+        }
+
+        .product_list2{
+            justify-content: normal;
+        }
+
+
+        .product_list .items{
+            width:100%;
+            padding-bottom:0;
+        }        
+
+
+        .product_list .items2{
+            width:49%;
+            padding-bottom:2%;
+        }                
+
+        .product_txt{
+            box-sizing: border-box;
+            padding:5% 5% 5% 10%;
+        }
+
+        .contetns .link01{
+            width: 18%;
+            left: 41%;
+        }    
+
+        .contetns .link02{
+            width: 18%;
+            height: 7%;
+            left: 41%;
+            top: 88.5%;
+        }        
+
+        .swiper-pagination{
+            bottom:34% !important;
+        }
+
+        .swiper-pagination2{
+            display: block;
+            padding-top:3%;
+        }
+
+        #tab1 .contents07 .swiper-pagination{
+            bottom:34.5% !important;
+        }        
+
+        #tab2 .swiper-pagination{
+            bottom:45% !important;
+        }        
+
+        #tab2 .contents03 .swiper-pagination{
+            bottom:41.5% !important;
+        }        
+
+        #tab2 .contents04 .swiper-pagination, #tab2 .contents05 .swiper-pagination{
+            bottom:44% !important;
+        }           
+
+        #tab2 .contetns .link03{
+            width: 18%;
+            height: 7%;
+            left: 41%;
+            top: 86%;
+        }    
+
+        #tab2 .contetns .link04{
+            width: 18%;
+            height: 7%;
+            left: 41%;            
+            top: 84%;
+        }            
+        
+        #tab2 .contetns .link05{
+            width: 18%;
+            height: 7%;
+            left: 41%;            
+            top: 83.5%;
+        }              
+        
+        #tab3 .swiper-pagination{
+            bottom:42% !important;            
+        }
+
+        #tab3 .contents03 .swiper-pagination{
+            bottom:44% !important;            
+        }        
+
+        #tab3 .contents04 .swiper-pagination{
+            bottom:37.3% !important;            
+        }          
+
+        #tab3 .contetns .link05{
+            width: 18%;
+            height: 7%;
+            left: 41%;            
+            top: 83.5%;
+        }             
+        #tab3 .contetns .link06{
+            width: 18%;
+            height: 7%;
+            left: 41%;            
+            top: 88.5%;
+        }              
+        .con_product img{
+            max-width:90%;
+        }
+    }
+
+    @media(max-width:400px){
+        /* .default-tab{border-bottom:1px solid #e9e9e9;}
+        .tabs.image-tabs .tab::before{
+            height:1px;
+        } */
+        .swiper-pagination{
+            bottom:33.5% !important;
+        }        
+        #tab1 .contents07 .swiper-pagination{
+            bottom:34% !important;
+        }
+        #tab2 .swiper-pagination{
+            bottom:44.5% !important;
+        }
+        #tab2 .contents03 .swiper-pagination{
+            bottom:41% !important;
+        }
+        #tab2 .contents04 .swiper-pagination, #tab2 .contents05 .swiper-pagination{
+            bottom:43.5% !important;
+        }
+        #tab3 .swiper-pagination{
+            bottom:41.5% !important;
+        }
+        #tab3 .contents03 .swiper-pagination{
+            bottom:43.5% !important;
+        }
+    }
+
+    </style>
+
+    <header>
+        <div class="icon_list">
+            <div class="logo_naver">
+                <a href="https://shopping.naver.com/ns/home">
+                    <span class="blind">NAVER</span>
+                </a>
+            </div>
+            <h1 class="logo">
+                <a href="https://brand.naver.com/test089">
+                    <span class="blind">CHANEL</span>
+                </a>
+            </h1>
+            <div class="naver_share">
+                <a href="" class="btn_share">
+                    <span class="blind">공유하기</span>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="tabs text-tabs">
+            <div class="tab active" data-target="tab1"><span class="active">CHANEL WINTER CONSTELLATION</span></div>
+            <div class="tab" data-target="tab2"><span>향수</span></div>
+            <div class="tab" data-target="tab3"><span>메이크업</span></div>
+        </div>
+
+
+        <div class="default-tab">
+            <img src="images/tab1_on2.png" alt="기본 탭" id="defaultTab">
+        </div>
+        
+        <div class="tabs image-tabs">
+            <div class="tab active" data-target="tab1"><img src="images/tab1_off.png" alt="탭1"></div>
+            <div class="tab" data-target="tab2"><img src="images/tab2_off.png" alt="탭2"></div>
+            <div class="tab" data-target="tab3"><img src="images/tab3_off.png" alt="탭3"></div>
+        </div>
+
+
+
+    </header>
+
+    <div class="Container"> 
+
+        <!--chanel-->
+        <div class="tab-content active" id="tab1">
+            <div class="video_contetns">
+                <div class="video_box">
+                    <video class="video_pc" poster="images/video_poster_pc.jpg" autoplay="" muted="" loop="" data-autoplay="" playsinline="" >
+                        <source src="images/HOLIDAY_2025_MASTER_PACKSHOT_WRAPPING_15S_16X9_KOR.mp4" type="video/mp4">
+                    </video>
+                    <video class="video_mo" poster="images/video_poster_mo.jpg" autoplay="" muted="" loop="" data-autoplay="" playsinline="" >
+                        <source src="images/HOLIDAY_2025_MASTER_PACKSHOT_WRAPPING_15S_1X1_KOR.mp4" type="video/mp4">
+                    </video>                    
+                </div>
+
+                <div class="contetns">
+                    <picture>
+                        <source data-device="mobile" srcset="images/01/mo_image01_02.jpg" media="(max-width: 780px)" >
+                        <img loading="lazy" src="images/01/image01_02.jpg" alt=""/>
+                    </picture>                                
+                </div>
+            </div>
+
+            <div class="contetns contents02">
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image02_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image02_01.jpg" alt=""/>
+                </picture>     
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image02_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image02_02.jpg" alt=""/>
+                </picture>     
+                <a href="https://brand.naver.com/test089/products/12521115159" target="_blank" class="link link01">구매하기</a>
+            </div>      
+
+            <div class="contents01_product con_product">
+                <div class="product_list product_list2 pro_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521115159" target="_blank">
+                                <img src="images/product/01/02_125007.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] Nº5오 드 빠르펭 100ml
+                                    </p>
+                                    <strong>284,000원</strong>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521118250" target="_blank">
+                                <img src="images/product/01/03_125109.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] Nº5 오 드 빠르펭 펄스 스프레이 3X7ml
+                                    </p>
+                                    <strong>317,000원</strong>
+                                </div>
+                            </a>
+                        </div>                                                       
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521111653" target="_blank">
+                                <img src="images/product/01/01_105848.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] Nº5 화이트 골드 바디오일 250ml
+                                    </p>
+                                    <strong>182,000원</strong>                                    
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492260177" target="_blank">
+                                <img src="images/product/01/04_12492260177.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        Nº5 오 드 빠르펭 스프레이 100ml
+                                    </p>
+                                    <strong>284,000원</strong>
+                                </div>
+                            </a>
+                        </div>
+
+                    </div>                                                                
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </div>  
+
+            <div class="contetns contents03">
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image03_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image03_01.jpg" alt=""/>
+                </picture>  
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image03_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image03_02.jpg" alt=""/>
+                </picture>                                  
+                <a href="https://brand.naver.com/test089/products/12492201764" target="_blank" class="link link01">구매하기</a>
+            </div>        
+
+            <div class="contents02_product con_product">
+                <div class="product_list pro_swiper">
+                    <div class="swiper-wrapper">                    
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521105643" target="_blank">
+                                <img src="images/product/02/01_107008.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 블루 드 샤넬 오 드 빠르펭 스프레이 100ml
+                                    </p>
+                                    <strong>211,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492199667" target="_blank">
+                                <img src="images/product/02/02_107210.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        블루 드 샤넬 렉스클루시프 60ml
+                                    </p>
+                                    <strong>262,000원</strong>
+                                </div>
+                            </a>
+                        </div>      
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492201764" target="_blank">
+                                <img src="images/product/02/03_107220.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        블루 드 샤넬 렉스클루시프 100ml
+                                    </p>
+                                    <strong>365,000원</strong>
+                                </div>
+                            </a>
+                        </div>     
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492220206" target="_blank">
+                                <img src="images/product/02/04_107360.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        블루 드 샤넬 오 드 빠르펭 스프레이 100ml
+                                    </p>
+                                    <strong>211,000원</strong>
+                                </div>
+                            </a>
+                        </div>  
+                    </div>           
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </div>
+
+            <div class="contetns contents04">
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image04_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image04_01.jpg" alt=""/>
+                </picture>  
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image04_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image04_02.jpg" alt=""/>
+                </picture>                                  
+                <a href="https://brand.naver.com/test089/products/12521110398" target="_blank" class="link link01">구매하기</a>
+            </div>           
+
+            <div class="contents03_product con_product">
+                <div class="product_list product_list2 pro_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521110398" target="_blank">
+                                <img src="images/product/03/01_116007.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 코코 마드모아젤 오 드 빠르펭 100ml
+                                    </p>
+                                    <strong>284,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521121697" target="_blank">
+                                <img src="images/product/03/02_116619.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 코코 마드모아젤 오 드 빠르펭 엥땅스 펄스 스프레이 3X7ml
+                                    </p>
+                                    <strong>317,000원</strong>
+                                </div>
+                            </a>
+                        </div>      
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521116494" target="_blank">
+                                <img src="images/product/03/03_116958.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 코코 마드모아젤 펄리 바디 오일 250ml
+                                    </p>
+                                    <strong>182,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>  
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492327729" target="_blank">
+                                <img src="images/product/03/04_12492327729.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        코코 마드모아젤 헤어 미스트 35ml
+                                    </p>
+                                    <strong>88,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>                          
+                    </div>
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </div>                 
+        
+            <div class="contetns contents05">
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image05_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image05_01.jpg" alt=""/>
+                </picture>  
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image05_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image05_02.jpg" alt=""/>
+                </picture>                                  
+                <a href="https://brand.naver.com/test089/products/12521109158" target="_blank" class="link link01">구매하기</a>
+            </div>                    
+            
+            <div class="contents04_product con_product">
+                <div class="product_list pro_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521109158" target="_blank">
+                                <img src="images/product/04/01_136008.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 샹스 오 스플렌디드 오 드 빠르펭 100ml
+                                    </p>
+                                    <strong>284,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492271652" target="_blank">
+                                <img src="images/product/04/02_136220.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        샹스 오 스플렌디드 오 드 빠르펭 스프레이 100ml
+                                    </p>
+                                    <strong>284,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>                         
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492276254" target="_blank">
+                                <img src="images/product/04/03_12492276254.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        샹스 오 땅드르 오 드 빠르펭 100ml
+                                    </p>
+                                    <strong>284,000원</strong>
+                                </div>
+                            </a>
+                        </div>      
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492280001" target="_blank">
+                                <img src="images/product/04/04_12492280001.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        샹스 오 땅드르 오 드 뚜왈렛 스프레이 100ml
+                                    </p>
+                                    <strong>231,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>  
+                    </div>
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </div>                  
+
+            <div class="contetns contents06">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider01_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider01_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider01_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider01_02.jpg" alt=""/>
+                            </picture>                             
+                        </div>
+
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider02_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider02_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider02_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider02_02.jpg" alt=""/>
+                            </picture>  
+                        </div>
+
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider03_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider03_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider03_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider03_02.jpg" alt=""/>
+                            </picture>                              
+                        </div>
+
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider04_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider04_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider04_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider04_02.jpg" alt=""/>
+                            </picture>                              
+                        </div>
+                    </div>
+                
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="contents05_product con_product">
+                <div class="product_list product_list2 pro_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide items items2">
+                            <a href="https://brand.naver.com/test089/products/12553080877" target="_blank">
+                                <img src="images/product/05/01_12553080877.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        레 사인 드 샤넬 홀리데이 리미티드 에디션
+                                    </p>
+                                    <strong>87,000원</strong>
+                                </div>
+                            </a>
+                        </div> 
+                        <div class="swiper-slide items items2">
+                            <a href="https://brand.naver.com/test089/products/12521134383" target="_blank">
+                                <img src="images/product/05/02_151397.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 레 꺄트르 옹브르 뉘 아스트랄
+                                    </p>
+                                    <strong>102,000원</strong>
+                                </div>
+                            </a>
+                        </div> 
+                        <div class="swiper-slide items items2">
+                            <a href="https://brand.naver.com/test089/products/12553154219" target="_blank">
+                                <img src="images/product/05/03_12553154219.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        루쥬 알뤼르 벨벳 홀리데이 리미티드 에디션
+                                    </p>
+                                    <strong>63,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>                        
+                        <div class="swiper-slide items items2">
+                            <a href="https://brand.naver.com/test089/products/12521122978" target="_blank">
+                                <img src="images/product/05/04_190077.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 느와르 알뤼르 마스카라
+                                    </p>
+                                    <strong>61,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>
+
+                    </div>
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </div>                    
+
+            <div class="contetns contents07">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider05_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider05_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider05_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider05_02.jpg" alt=""/>
+                            </picture>                              
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider06_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider06_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider06_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider06_02.jpg" alt=""/>
+                            </picture>                              
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider07_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider07_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/01/slider07_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/01/slider07_02.jpg" alt=""/>
+                            </picture>                              
+                        </div>
+                    </div>
+                
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>            
+
+            <div class="contents06_product con_product">
+                <div class="product_list pro_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492036152" target="_blank">
+                                <img src="images/product/06/02_144870.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        수블리마지 렉스트레 드 뉘
+                                    </p>
+                                    <strong>1,000,000원</strong>
+                                </div>
+                            </a>
+                        </div>                          
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492170450" target="_blank">
+                                <img src="images/product/06/03_133850.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        라 크렘 망 핸드 크림
+                                    </p>
+                                    <strong>88,000원</strong>
+                                </div>
+                            </a>
+                        </div>                          
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492019305" target="_blank">
+                                <img src="images/product/06/01_140030.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        N1 DE CHANEL 레드 까멜리아 세럼 인 미스트 50ml
+                                    </p>
+                                    <strong>165,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12492173375" target="_blank">
+                                <img src="images/product/06/04_141640.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        르 리프트 라크렘 망 핸드크림
+                                    </p>
+                                    <strong>98,000원</strong>
+                                </div>
+                            </a>
+                        </div>   
+                    </div>
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </div>           
+            
+            <div class="contetns contents08">
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image06_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image06_01.jpg" alt=""/>
+                </picture>  
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image06_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image06_02.jpg" alt=""/>
+                </picture>                 
+            </div>                
+
+            <div class="contetns contents09">
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image07_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image07_01.jpg" alt=""/>
+                </picture>  
+                <picture>
+                    <source data-device="mobile" srcset="images/01/image07_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/01/image07_02.jpg" alt=""/>
+                </picture>                 
+            </div>
+            
+        </div>
+        <!--chanel-->
+
+        <!--향수-->
+        <div class="tab-content" id="tab2">
+            <div class="contetns contents01">
+                <picture>
+                    <source data-device="mobile" srcset="images/02/sec2_image01_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/02/sec2_image01_01.jpg" alt=""/>
+                </picture>
+                <picture>
+                    <source data-device="mobile" srcset="images/02/sec2_image01_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/02/sec2_image01_02.jpg" alt=""/>
+                </picture>                  
+            </div>
+
+            <div class="contetns contents02">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider01_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider01_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider01_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider01_02.jpg" alt=""/>
+                            </picture> 
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider02_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider02_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider02_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider02_02.jpg" alt=""/>
+                            </picture>
+                            <a href="https://brand.naver.com/test089/products/12521118250" target="_blank" class="link link03">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider03_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider03_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider03_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider03_02.jpg" alt=""/>
+                            </picture>                            
+                            <a href="https://brand.naver.com/test089/products/12521121697" target="_blank" class="link link03">구매하기</a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+
+            <div class="contetns contents03">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider04_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider04_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider04_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider04_02.jpg" alt=""/>
+                            </picture>  
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider05_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider05_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider05_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider05_02.jpg" alt=""/>
+                            </picture>  
+                            <a href="https://brand.naver.com/test089/products/12521116494" target="_blank" class="link link04">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider06_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider06_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider06_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider06_02.jpg" alt=""/>
+                            </picture>                              
+                            <a href="https://brand.naver.com/test089/products/12521111653" target="_blank" class="link link04">구매하기</a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>                  
+            
+            <div class="contetns contents04">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider07_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider07_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider07_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider07_02.jpg" alt=""/>
+                            </picture>  
+                            <a href="https://brand.naver.com/test089/products/12521115159" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider08_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider08_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider08_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider08_02.jpg" alt=""/>
+                            </picture>                              
+                            <a href="https://brand.naver.com/test089/products/12521110398" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider09_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider09_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider09_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider09_02.jpg" alt=""/>
+                            </picture>                              
+                            <a href="https://brand.naver.com/test089/products/12521109158" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>                      
+
+            <div class="contetns contents05">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider10_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider10_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider10_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider10_02.jpg" alt=""/>
+                            </picture>                               
+                            <a href="https://brand.naver.com/test089/products/12521105643" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider11_01_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider11_01.jpg" alt=""/>
+                            </picture>                             
+                            <picture>
+                                <source data-device="mobile" srcset="images/02/sec2_slider11_02_mo.jpg" media="(max-width: 780px)" >
+                                <img src="images/02/sec2_slider11_02.jpg" alt=""/>
+                            </picture>                                                           
+                            <a href="https://brand.naver.com/test089/products/12521104106" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>           
+            
+            <div class="contetns contents06">
+                <picture>
+                    <source data-device="mobile" srcset="images/02/sec2_image02_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/02/sec2_image02_01.jpg" alt=""/>
+                </picture>
+                <picture>
+                    <source data-device="mobile" srcset="images/02/sec2_image02_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/02/sec2_image02_02.jpg" alt=""/>
+                </picture>                  
+            </div>                       
+        </div>
+        <!--향수-->
+
+        <!--메이크업-->
+        <div class="tab-content" id="tab3">
+            <div class="contetns contents01">
+                <picture>
+                    <source data-device="mobile" srcset="images/03/sec3_image01_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/03/sec3_image01_01.jpg" alt=""/>
+                </picture>
+                <picture>
+                    <source data-device="mobile" srcset="images/03/sec3_image01_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/03/sec3_image01_02.jpg" alt=""/>
+                </picture>  
+            </div>   
+
+            <div class="con_product">
+                <div class="product_list product_list2 pro_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12553080877" target="_blank">
+                                <img src="images/product/09/01_12553080877.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 레 사인 드 샤넬 홀리데이 리미티드 에디션
+                                    </p>
+                                    <strong>87,000원</strong>
+                                </div>
+                            </a>                                
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12521134383" target="_blank">
+                                <img src="images/product/09/02_151397.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 레 꺄트르 옹브르 뉘 아스트랄
+                                    </p>
+                                    <strong>102,000원</strong>
+                                </div>
+                            </a>
+                        </div>      
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12553154220" target="_blank">
+                                <img src="images/product/05/03_12553154219.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 루쥬 알뤼르 벨벳 홀리데이 리미티드 에디션
+                                    </p>
+                                    <strong>63,000원</strong>
+                                </div>
+                            </a>
+                        </div>   
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12553196026" target="_blank">
+                                <img src="images/product/08/03_12553196026.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 루쥬 알뤼르 라끄 틴트 홀리데이 리미티드 에디션
+                                    </p>
+                                    <strong>59,000원</strong>
+                                </div>
+                            </a>
+                        </div>                                                                                       
+                    </div>
+                    <div class="swiper-pagination2"></div>
+                </div>
+            </div> 
+
+
+
+
+            <div class="contetns contents02 pc">
+                    <img src="images/03/sec3_image02_01.jpg" alt=""/>
+                    <img src="images/03/sec3_image02_02.jpg" alt=""/>
+                <a href="https://brand.naver.com/test089/products/12553080878" target="_blank" class="link link05">구매하기</a>
+            </div>                   
+
+            <div class="contetns contents02 mo">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/03/sec_slider01_01_mo.jpg" alt="">
+                            <img class="text-img" src="images/03/sec_slider01_02_mo.jpg" alt="">
+                            <a href="https://brand.naver.com/test089/products/12553080878" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/03/sec_slider02_01_mo.jpg" alt="">
+                            <img class="text-img" src="images/03/sec_slider01_02_mo.jpg" alt="">
+                            <a href="https://brand.naver.com/test089/products/12553080878" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                    </div>
+                
+                    <div class="swiper-pagination"></div>
+                </div>                
+            </div>
+
+            
+
+
+
+            <div class="contetns contents03 pc">
+                    <img  src="images/03/sec3_image03_01.jpg" alt=""/>
+                    <img  src="images/03/sec3_image03_02.jpg" alt=""/>
+                <a href="https://brand.naver.com/test089/products/12521134383" target="_blank" class="link link05">구매하기</a>
+            </div>             
+            
+            <div class="contetns contents03 mo">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/03/sec_slider03_01_mo.jpg" alt="">
+                            <img class="text-img" src="images/03/sec_slider03_02_mo.jpg" alt="">
+                            <a href="https://brand.naver.com/test089/products/12521134383" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/03/sec_slider04_01_mo.jpg" alt="">
+                            <img class="text-img" src="images/03/sec_slider03_02_mo.jpg" alt="">
+                            <a href="https://brand.naver.com/test089/products/12521134383" target="_blank" class="link link05">구매하기</a>
+                        </div>
+                    </div>
+                
+                    <div class="swiper-pagination"></div>
+                </div>                
+            </div>              
+
+            <div class="contetns contents04 pc">
+                    <img src="images/03/sec3_image04_01.jpg" alt=""/>
+                    <img src="images/03/sec3_image04_02.jpg" alt=""/>
+                <a href="https://brand.naver.com/test089/products/12553154220" target="_blank" class="link link05">구매하기</a>
+            </div> 
+
+            <div class="contetns contents04 mo">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="images/03/sec_slider05_01_mo.jpg" alt="">
+                            <img class="text-img" src="images/03/sec_slider05_02_mo.jpg" alt="">
+                            <a href="https://brand.naver.com/test089/products/12553154220" target="_blank" class="link link06">구매하기</a>
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="images/03/sec_slider06_01_mo.jpg" alt="">
+                            <img class="text-img" src="images/03/sec_slider05_02_mo.jpg" alt="">
+                            <a href="https://brand.naver.com/test089/products/12553154220" target="_blank" class="link link06">구매하기</a>
+                        </div>                    
+                    </div>
+                
+                    <div class="swiper-pagination"></div>
+                </div>                
+            </div> 
+
+            <div class="contents08_product con_product">
+                <div class="product_list product_list2 pro_swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12553154220" target="_blank">
+                                <img src="images/product/08/01_12553154220.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 루쥬 알뤼르 벨벳 홀리데이 리미티드 에디션 549 - 루즈 뷔
+                                    </p>
+                                    <strong>63,000원</strong>
+                                </div>
+                            </a>                                
+                            
+                        </div>
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12553154219" target="_blank">
+                                <img src="images/product/08/02_12553154219.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 루쥬 알뤼르 벨벳 홀리데이 리미티드 에디션 548 - 앱스트렛
+                                    </p>
+                                    <strong>63,000원</strong>
+                                </div>
+                            </a>
+                        </div>                               
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12553196026" target="_blank">
+                                <img src="images/product/08/03_12553196026.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 루쥬 알뤼르 라끄 틴트 홀리데이 리미티드 에디션 559 - 네브루즈
+                                    </p>
+                                    <strong>59,000원</strong>
+                                </div>
+                            </a>
+                        </div>                               
+                        <div class="swiper-slide items">
+                            <a href="https://brand.naver.com/test089/products/12553196025" target="_blank">
+                                <img src="images/product/08/04_12553196025.jpg" alt=""/>
+                                <div class="product_txt">
+                                    <h2>CHANEL</h2>
+                                    <p>
+                                        [한정판] 루쥬 알뤼르 라끄 틴트 홀리데이 리미티드 에디션 558 - 엥컹디성트
+                                    </p>
+                                    <strong>59,000원</strong>
+                                </div>
+                            </a>
+                        </div>                                                                               
+                    </div>
+                    <div class="swiper-pagination2"></div>                    
+                </div>
+            </div>                 
+
+
+            <div class="contetns contents05">
+                <picture>
+                    <source data-device="mobile" srcset="images/03/sec3_image02_01_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/03/sec3_image05_01.jpg" alt=""/>
+                </picture>
+                <picture>
+                    <source data-device="mobile" srcset="images/03/sec3_image05_02_mo.jpg" media="(max-width: 780px)" >
+                    <img loading="lazy" src="images/03/sec3_image05_02.jpg" alt=""/>
+                </picture>                  
+            </div>                   
+        </div>
+        <!--메이크업-->     
+
+
+
+
+    </div>            
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>  
+
+
+    <script type="text/javascript">
+
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const pcTabs = document.querySelectorAll(".text-tabs .tab");
+            const mobileTabs = document.querySelector(".image-tabs");
+            const mobileTabBtns = document.querySelectorAll(".image-tabs .tab");
+            const defaultTab = document.getElementById("defaultTab");
+            const contents = document.querySelectorAll(".tab-content");
+
+            const changeImageSmoothly = (newSrc) => {
+                if (!defaultTab) return;
+
+                defaultTab.style.transition = "opacity 0.3s ease";
+                defaultTab.style.opacity = 0;
+
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        defaultTab.src = newSrc;
+                        defaultTab.style.opacity = 1;
+                    }, 150);
+                });
+            };
+
+            pcTabs.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    const target = tab.dataset.target;
+
+                    pcTabs.forEach(t => {
+                        t.classList.remove("active");
+                        t.querySelector("span").classList.remove("active");
+                    });
+                    contents.forEach(c => c.classList.remove("active"));
+
+                    tab.classList.add("active");
+                    tab.querySelector("span").classList.add("active");
+                    document.getElementById(target).classList.add("active");
+
+                    window.scrollTo({ top: 0, behavior: "smooth" });                    
+                });
+            });
+
+            defaultTab.addEventListener("click", () => {
+                const isOpen = mobileTabs.classList.toggle("open");
+                const activeTab = document.querySelector(".image-tabs .tab.active");
+                const target = activeTab ? activeTab.dataset.target : "tab1";
+
+
+                mobileTabBtns.forEach(tab => {
+                    tab.classList.remove("border-active");
+                    if (!isOpen) {
+                        tab.style.borderBottom = "";
+                    }
+                });
+
+                if (isOpen) {
+
+                    if (target === "tab1") {
+                        mobileTabBtns[1].classList.add("border-active");
+                    } else if (target === "tab2") {
+                        mobileTabBtns[0].classList.add("border-active");
+                    } else if (target === "tab3") {
+                        mobileTabBtns[0].classList.add("border-active");
+                    }
+
+                    const visibleTabs = Array.from(mobileTabBtns).filter(tab => tab.style.display !== "none");
+                    if (visibleTabs.length) {
+                        visibleTabs[visibleTabs.length - 1].style.borderBottom = "1px solid #e9e9e9";
+                    }
+
+                    changeImageSmoothly(`images/${target}_on2.png`);
+                } else {
+
+                    mobileTabBtns.forEach(tab => tab.style.borderBottom = "");
+                    changeImageSmoothly(`images/${target}_on2.png`);
+                }
+            });
+
+            mobileTabBtns.forEach(tab => {
+                tab.addEventListener("click", () => {
+                    const target = tab.dataset.target;
+
+                    mobileTabBtns.forEach(t => {
+                        t.classList.remove("active");
+                        const img = t.querySelector("img");
+                        if (img) img.src = `images/${t.dataset.target}_off.png`;
+                        t.style.display = "block";
+                        t.style.borderBottom = ""; 
+                    });
+                    contents.forEach(c => c.classList.remove("active"));
+
+                    tab.classList.add("active");
+                    const img = tab.querySelector("img");
+                    if (img) img.src = `images/${target}_on.png`;
+
+                    document.getElementById(target).classList.add("active");
+
+                    changeImageSmoothly(`images/${target}_on2.png`);
+
+                    mobileTabs.classList.remove("open");
+
+                    tab.style.display = "none";
+
+                    window.scrollTo({ top: 0, behavior: "smooth" });                       
+                });
+            });
+        });
+
+
+        document.querySelectorAll('.swiper').forEach((el) => {
+            const slides = el.querySelectorAll('.swiper-slide');
+            const loopMode = slides.length > 1;
+
+            new Swiper(el, {
+                loop: loopMode,
+                slidesPerView: 1,
+                slidesPerGroup: 1,
+                autoplay: {
+                    delay: 6000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: el.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+            });
+        }); 
+
+
+        let productSwipers = [];
+
+        function initProductSwipers() {
+            document.querySelectorAll(".product_list.pro_swiper").forEach((el) => {
+                const slides = el.querySelectorAll(".swiper-slide");
+                const loopMode = slides.length > 1;
+
+                const swiper = new Swiper(el, {
+                    loop: loopMode,
+                    slidesPerView: 2,
+                    slidesPerGroup: 1,
+                    spaceBetween: 20,
+                    autoplay: {
+                        delay: 6000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: el.querySelector(".swiper-pagination2"),
+                        clickable: true,
+                    },
+                });
+
+                productSwipers.push(swiper);
+            });
+        }
+
+
+        function destroyProductSwipers() {
+            productSwipers.forEach(swiper => {
+                // const pagination = swiper.el.querySelector(".swiper-pagination2");
+                // if (pagination) pagination.remove();
+
+                swiper.destroy(true, true);
+            });
+
+            productSwipers = [];
+        }
+
+
+        function handleResize() {
+            if (window.innerWidth <= 780) {
+                if (productSwipers.length === 0) initProductSwipers();
+            } else {
+                if (productSwipers.length > 0) destroyProductSwipers();
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            handleResize();
+            window.addEventListener("resize", handleResize);
+        });  
+
+        document.querySelectorAll('.swiper-two').forEach((el) => {
+            const slides = el.querySelectorAll('.swiper-slide');
+            const loopMode = slides.length > 2;
+
+            new Swiper(el, {
+                loop: loopMode,
+                slidesPerView: 2,
+                slidesPerGroup: 1,
+                spaceBetween: 20,
+                autoplay: false,
+                pagination: {
+                    el: el.querySelector('.swiper-pagination'),
+                    clickable: true,
+                },
+            });
+        });
+
+
+    </script>
+
+</html>

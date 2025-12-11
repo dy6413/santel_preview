@@ -1,58 +1,31 @@
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 
 export async function GET(req) {
   try {
-    // 세션 가져오기
     const session = await getServerSession(authOptions);
-    if (!session) {
-      return new Response(
-        JSON.stringify({ error: "Not authenticated" }),
-        { status: 401, headers: { "Content-Type": "application/json" } }
-      );
-    }
+    if (!session) return new Response(JSON.stringify({ error: "Not authenticated" }), { status: 401 });
 
-    // 세션에서 accessToken 가져오기
     const token = session.accessToken;
-    if (!token) {
-      return new Response(
-        JSON.stringify({ error: "No access token found in session" }),
-        { status: 401, headers: { "Content-Type": "application/json" } }
-      );
-    }
+    if (!token) return new Response(JSON.stringify({ error: "No access token" }), { status: 401 });
 
-    // GitHub 레포 정보
     const url = new URL(req.url);
-    const path = url.searchParams.get("path") || ""; // 하위 디렉토리 접근용
-    const owner = "dy6413";        // 본인 GitHub ID
-    const repo = "santel_preview"; // 본인 Repo 이름
+    const path = url.searchParams.get("path") || "";
+    const owner = "dy6413";   // GitHub ID
+    const repo = "santel_preview"; // Repo 이름
 
-    // GitHub API 호출
-    const res = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contents/${path}`,
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: "application/vnd.github+json",
-        },
-      }
-    );
-
-    const data = await res.json();
-
-    // 배열이 아닌 경우 빈 배열 반환
-    const files = Array.isArray(data) ? data : [];
-
-    return new Response(JSON.stringify(files), {
-      status: 200,
-      headers: { "Content-Type": "application/json" },
+    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json",
+      },
     });
 
+    const data = await res.json();
+    const files = Array.isArray(data) ? data : [];
+    return new Response(JSON.stringify(files), { status: 200 });
   } catch (err) {
-    return new Response(
-      JSON.stringify({ error: err.message }),
-      { status: 500, headers: { "Content-Type": "application/json" } }
-    );
+    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
   }
 }
 

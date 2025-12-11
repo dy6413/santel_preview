@@ -1,9 +1,8 @@
 "use client";
 
-import { useSession, signIn, signOut } from "next-auth/react";
-import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/react";
 
-export default function Home() {
+export default function HomePage() {
   const { data: session } = useSession();
 
   return (
@@ -17,13 +16,14 @@ export default function Home() {
         <>
           <h3>로그인됨: {session.user?.name}</h3>
           <button onClick={() => signOut()}>로그아웃</button>
-          <br /><br />
-          <Link href="/repo">Repo 파일 목록 보기 →</Link>
+          <br />
+          <a href="/repo">Repo 파일 목록 보기 →</a>
         </>
       )}
     </div>
   );
 }
+
 
 
 // "use client";

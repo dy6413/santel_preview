@@ -1,4 +1,3 @@
-// lib/authOptions.js
 import GithubProvider from "next-auth/providers/github";
 
 export const authOptions = {

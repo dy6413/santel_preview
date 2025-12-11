@@ -1,31 +1,24 @@
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/authOptions";
+import { authOptions } from "../../../../lib/authOptions";
 
 export async function GET(req) {
   try {
     const session = await getServerSession(authOptions);
-    if (!session) return new Response(JSON.stringify({ error: "Not authenticated" }), { status: 401 });
+    if (!session) {
+      return new Response(JSON.stringify({ error: "Not authenticated" }), {
+        status: 401,
+      });
+    }
 
-    const token = session.accessToken;
-    if (!token) return new Response(JSON.stringify({ error: "No access token" }), { status: 401 });
-
-    const url = new URL(req.url);
-    const path = url.searchParams.get("path") || "";
-    const owner = "dy6413";   // GitHub ID
-    const repo = "santel_preview"; // Repo 이름
-
-    const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/${path}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        Accept: "application/vnd.github+json",
-      },
+    return new Response(JSON.stringify({ message: "OK" }), {
+      status: 200,
     });
-
-    const data = await res.json();
-    const files = Array.isArray(data) ? data : [];
-    return new Response(JSON.stringify(files), { status: 200 });
-  } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), { status: 500 });
+  } catch (error) {
+    console.error("Error in GET:", error);
+    return new Response(
+      JSON.stringify({ error: "Internal Server Error" }),
+      { status: 500 }
+    );
   }
 }
 

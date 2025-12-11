@@ -1,16 +1,25 @@
-// app/layout.tsx
-import { ReactNode } from "react";
-import { SessionProvider } from "next-auth/react";
+import type { Metadata } from "next";
+import Providers from "../components/Providers";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export const metadata: Metadata = {
+  title: "Santel Preview",
+  description: "GitHub Dashboard",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en">
       <body>
-        <SessionProvider>{children}</SessionProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
 }
+
 
 
 // import type { Metadata } from "next";

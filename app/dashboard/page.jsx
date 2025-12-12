@@ -1,8 +1,23 @@
-export default function DashboardPage() {
+// app/dashboard/page.jsx
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "../../lib/authOptions"; // 루트 기준 상대경로
+
+export default async function DashboardPage() {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return (
+      <div style={{ padding: 40 }}>
+        <h2>GitHub Dashboard</h2>
+        <a href="/api/auth/signin">로그인</a>
+      </div>
+    );
+  }
+
   return (
-    <div>
-      <h1>Dashboard</h1>
-      <p>여기에 골프 프로젝트 같은 콘텐츠가 표시됩니다.</p>
+    <div style={{ padding: 40 }}>
+      <h3>로그인됨: {session.user?.name}</h3>
+      <a href="/repo">Repo 파일 목록 보기 →</a>
     </div>
   );
 }

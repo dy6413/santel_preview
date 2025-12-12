@@ -1,12 +1,11 @@
 import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  experimental: {
-    appDir: true,
-  },
-} as any;
+  // 필요하면 다른 옵션만 넣기
+};
 
 export default nextConfig;
+
 
 
 

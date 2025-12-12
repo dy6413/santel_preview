@@ -1,4 +1,6 @@
 // app/dashboard/page.jsx
+export const dynamic = "force-dynamic";
+
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../../lib/authOptions"; // 루트 기준 상대경로
 

@@ -1,8 +1,8 @@
-// app/dashboard/page.jsx
 export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../lib/authOptions"; // 루트 기준 상대경로
+import { authOptions } from "../../lib/authOptions";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);

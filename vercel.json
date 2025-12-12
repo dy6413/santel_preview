@@ -1,13 +1,5 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@vercel/next"
-    }
-  ],
   "rewrites": [
-    { "source": "/dashboard", "destination": "/dashboard" },
     { "source": "/dashboard/:path*", "destination": "/dashboard/:path*" }
   ]
 }

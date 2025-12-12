@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../../lib/authOptions"; // 상대 경로 수정
+import { authOptions } from "../../../../lib/authOptions"; // 상대 경로 수정
 
 export async function GET(req) {
   try {

@@ -1,9 +1,31 @@
-export default function ProjectPage({ params }) {
-    return (
-      <div className="p-6">
-        <h1 className="text-xl font-bold mb-4">{params.project}</h1>
-        <p>여기에 해당 프로젝트의 파일 목록, 수정기 등이 들어갑니다.</p>
-      </div>
-    );
-  }
-  
+"use client";
+
+import { useParams } from "next/navigation";
+import { useEffect, useState } from "react";
+
+export default function ProjectPage() {
+  const params = useParams();
+  const { project } = params;
+  const [repoData, setRepoData] = useState(null);
+
+  useEffect(() => {
+    async function fetchRepo() {
+      const res = await fetch(`/api/github/repos/${project}`);
+      if (res.ok) {
+        const data = await res.json();
+        setRepoData(data);
+      }
+    }
+    fetchRepo();
+  }, [project]);
+
+  if (!repoData) return <div>Loading...</div>;
+
+  return (
+    <div>
+      <h1>{repoData.name}</h1>
+      <p>{repoData.description}</p>
+      <p>Stars: {repoData.stargazers_count}</p>
+    </div>
+  );
+}

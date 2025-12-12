@@ -1,4 +1,3 @@
-// app/dashboard/page.jsx
 export default function DashboardPage() {
   return (
     <div>
@@ -7,6 +6,7 @@ export default function DashboardPage() {
     </div>
   );
 }
+
 
 
 // "use client";
